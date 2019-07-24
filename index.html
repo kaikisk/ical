@@ -6,7 +6,9 @@
     <link type="text/css" href="icalendar/jquery.icalendar.css" rel="stylesheet"> 
     <script type="text/javascript" src="icalendar/jquery.icalendar.js"></script>
     <script>
-        $("#calender").icalender();
+        $("#calendar").icalendar({start: new Date(2008, 1-1, 26, 11, 30, 00), 
+    end: new Date(2008, 1-1, 26, 12, 45, 00), 
+    title: 'Australia Day lunch'});
     </script>
 </head>
 
@@ -14,5 +16,5 @@
     <a href="event/the_live.ics">
         カレンダーに登録する
     </a>
-    <span id="calender">calenderの表示</span>
+    <span id="calendar">calendarの表示</span>
 </body>
