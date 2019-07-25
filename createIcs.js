@@ -19,6 +19,12 @@ function createIcs(){
     +"END:VCALENDAR\n"
 
     console.log(ics);
+
+    var file = new Blob([ics], {type: ics});
+    var url = window.URL.createObjectURL(file);
+    $("#downloadIcs").attr("href", url);
+    
+    console.log("success");
 }
 
 function download(){
