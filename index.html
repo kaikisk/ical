@@ -7,11 +7,6 @@
     <script type="text/javascript" src="icalendar/jquery.icalendar.js"></script>
     <script type="text/javascript" src="icalendar/jquery.icalendar.pack.js"></script>
     <script type="text/javascript" src="createIcs.js"></script>
-    <script>
-        $("#calendar").icalendar({site: ["google"], start: new Date(2008, 1-1, 26, 11, 30, 00), 
-    end: new Date(2008, 1-1, 26, 12, 45, 00), 
-    title: 'Australia Day lunch'});
-    </script>
 </head>
 
 <body>
@@ -26,4 +21,5 @@
     <input type="txt" id="description" class="txt">詳細の入力してください
 
     <button class="btn btn-primary btn-block" onclick="createIcs()">ics情報表示</button>
+    <a id="downloadIcs" onclick="download()">ダウンロード</a>
 </body>
