@@ -2,7 +2,7 @@ function createIcs(){
     var date = $("#txtDate").val();
     var detail = $("#description").val();
 
-    var dat1 = date.replace(/-/g, '')
+    var date1 = date.replace(/-/g, '');
 
     var ics = "BEGIN:VCALENDAR\n"
     +"VERSION:1.0\n"
