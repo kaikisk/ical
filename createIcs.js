@@ -26,11 +26,3 @@ function createIcs(){
     
     console.log("success");
 }
-
-function download(){
-    var file = new Blob([ics], {type: ics});
-    var url = window.URL.createObjectURL(file);
-    $("#downloadIcs").attr("href", url);
-    
-    console.log("success");
-}
