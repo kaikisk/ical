@@ -34,7 +34,7 @@ function download() {
         a.click();
         setTimeout(function() {
             document.body.removeChild(a);
-            window.URL.revokeObjectURL(url);  
+            window.URL.revokeObjectURL(url); 
         }, 0); 
     }
 }
