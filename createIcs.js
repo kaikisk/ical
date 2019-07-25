@@ -23,18 +23,7 @@ function createIcs(){
 
 function download() {
     var file = new Blob([ics], {type: ics});
-    if (window.navigator.msSaveOrOpenBlob) // IE10+
-        window.navigator.msSaveOrOpenBlob(file,"calendar");
-    else { // Others
-        var a = $("#downloadIcs"),
-                url = URL.createObjectURL(file);
-        a.href = url;
-        a.download = calendar;
-        document.body.appendChild(a);
-        a.click();
-        setTimeout(function() {
-            document.body.removeChild(a);
-            window.URL.revokeObjectURL(url); 
-        }, 0); 
-    }
+    var url = window.URL.createObjectURL(file);
+    $("#downloadIcs").attr("href", url);
+    $("#downloadIcs").attr("download", "calendar.ics");
 }
