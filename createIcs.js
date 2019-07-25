@@ -21,9 +21,11 @@ function createIcs(){
     console.log(ics);
 }
 
-function download() {
+function download(){
     var file = new Blob([ics], {type: ics});
     var url = window.URL.createObjectURL(file);
     $("#downloadIcs").attr("href", url);
     $("#downloadIcs").attr("download", "calendar.ics");
+    
+    console.log("success");
 }
