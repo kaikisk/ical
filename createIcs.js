@@ -1,4 +1,5 @@
 var ics = '';
+var i = 0;
 
 function createIcs(){
     var date = $("#txtDate").val();
@@ -26,3 +27,44 @@ function createIcs(){
     
     console.log("success");
 }
+
+var db;
+var indexedDB = window.indexedDB || window.mozIndexedDB || window.msIndexedDB;
+
+    if (indexedDB) {
+        // データベースを削除したい場合はコメントを外します。
+        //indexedDB.deleteDatabase("mydb");
+        var openRequest = indexedDB.open("test");
+            
+        openRequest.onupgradeneeded = function(event) {
+            // データベースのバージョンに変更があった場合(初めての場合もここを通ります。)
+            db = event.target.result;
+            var store = db.createObjectStore("store1", { keyPath: "mykey"});
+            store.createIndex("myvalueIndex", "myvalue");
+        }
+            
+        openRequest.onsuccess = function(event) {
+            db = event.target.result;
+        }
+    } else {
+        window.alert("このブラウザではIndexed DataBase API は使えません。");     
+    }
+
+    function save() {
+        //localStorage.setItem(x, $('#'+x).val());
+    
+        var db;
+        var request = indexedDB.open('test');
+        request.onsuccess = function (event){
+            db = event.target.result;
+            var ts = db.transaction(["store1"], "readwrite");
+            var store = ts.objectStore("store1");
+            var request = store.put({mykey: i, myvalue: ics});
+            request.onsuccess = function(event){
+                console.log("成功しました");
+            }
+            request.onerror = function(event){
+                console.log("エラーが発生しました。");
+            }
+        }
+    }
